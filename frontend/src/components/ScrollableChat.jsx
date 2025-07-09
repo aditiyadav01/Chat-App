@@ -6,10 +6,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
-import { ChatState } from "../Context/ChatProvider";
 import { formatDateLabel } from "./utils/formDateLabel";
 import { FaCheck, FaCheckDouble, FaFileAlt } from "react-icons/fa";
+import { ChatState } from "@/context/ChatProvider";
 
 const ScrollableChat = ({ messages }) => {
   const { user, selectedChat } = ChatState();

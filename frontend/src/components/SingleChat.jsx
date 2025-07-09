@@ -1,4 +1,3 @@
-import { ChatState } from "@/context/ChatProvider";
 import { ArrowLeft } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { getSender, getSenderFull } from "./config/ChatLogics";
@@ -16,6 +15,7 @@ import Lottie from "lottie-react";
 import { Image, SendHorizonal } from "lucide-react";
 import { FaFileImage, FaFileAlt } from "react-icons/fa";
 import { Paperclip, Image as ImageIcon } from "lucide-react";
+import { ChatState } from "@/context/ChatProvider";
 
 const ENDPOINT = "https://chat-app-backend-qxy8.onrender.com0";
 var socket, selectedChatCompare;

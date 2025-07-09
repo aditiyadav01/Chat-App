@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ChatState } from "../../Context/ChatProvider";
 import { getSender } from "../config/ChatLogics.jsx";
 import ChatLoading from "../ChatLoading";
 import ProfileModal from "./ProfileModel";
@@ -26,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { Bell, BellIcon, ChevronDown, Loader2, Search } from "lucide-react";
+import { ChatState } from "@/context/ChatProvider.jsx";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");

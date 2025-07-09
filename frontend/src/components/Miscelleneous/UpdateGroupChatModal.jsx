@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ChatState } from "@/context/ChatProvider";
 import UserBadgeItem from "../User Avatar/UserBadgeItem";
 import UserListItem from "../User Avatar/UserListItem";
+import { ChatState } from "@/context/ChatProvider";
 
 const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
   const [groupChatName, setGroupChatName] = useState("");

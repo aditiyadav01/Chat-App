@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
-import { ChatState } from "../../Context/ChatProvider";
 import UserListItem from "../User Avatar/UserListItem.jsx";
 
 import {
@@ -18,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import UserBadgeItem from "../User Avatar/UserBadgeItem";
+import { ChatState } from "@/context/ChatProvider.jsx";
 
 const GroupChatModal = ({ children }) => {
   const [open, setOpen] = useState(false);

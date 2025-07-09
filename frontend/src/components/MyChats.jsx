@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getSender } from "../components/config/ChatLogics.jsx";
-import { ChatState } from "../Context/ChatProvider";
 import axios from "axios";
 import ChatLoading from "./ChatLoading";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import { toast } from "sonner";
 import { Plus } from "lucide-react";
 
 import GroupChatModal from "./Miscelleneous/GroupChatModel.jsx";
+import { ChatState } from "@/context/ChatProvider.jsx";
 
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();

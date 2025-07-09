@@ -1,10 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ChatState } from "../Context/ChatProvider";
-import { useContext } from "react";
 import dayjs from "dayjs";
 import isToday from "dayjs/plugin/isToday";
 import isYesterday from "dayjs/plugin/isYesterday";
 import advancedFormat from "dayjs/plugin/advancedFormat";
+import { ChatState } from "@/context/ChatProvider";
 
 dayjs.extend(isToday);
 dayjs.extend(isYesterday);

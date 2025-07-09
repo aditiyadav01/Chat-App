@@ -1,8 +1,8 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { ChatState } from "../../Context/ChatProvider";
+import { ChatState } from "@/context/ChatProvider";
 
 const UserListItem = ({ user, handleFunction }) => {
-  const { onlineUsers } = ChatState();
+  const { onlineUsers } = ChatState(e);
 
   const isOnline = onlineUsers.includes(user._id);
 
