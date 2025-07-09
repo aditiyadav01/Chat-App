@@ -17,7 +17,7 @@ import { FaFileImage, FaFileAlt } from "react-icons/fa";
 import { Paperclip, Image as ImageIcon } from "lucide-react";
 import { ChatState } from "@/context/ChatProvider";
 
-const ENDPOINT = "https://chat-app-backend-qxy8.onrender.com0";
+const ENDPOINT = "https://chat-app-backend-qxy8.onrender.com";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {

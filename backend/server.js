@@ -8,13 +8,20 @@ const { notFound, errorHandler } = require("./middlewares/errorMiddleware.js");
 const messageRoutes = require("./routes/messageRoutes.js");
 const Message = require("../backend/models/messageModel.js");
 const uploadRoutes = require("./routes/uploadRoutes.js");
-const session = require("express-session");
+const cors = require("cors");
 
 dotenv.config();
 connectDB();
 
 const app = express();
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: ["https://chat-app-45ku.onrender.com"],
+    credentials: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("API is Running");
