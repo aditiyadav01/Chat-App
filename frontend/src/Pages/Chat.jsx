@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SideDrawer from "../components/Miscelleneous/SideDrawer.jsx";
 import MyChats from "../components/MyChats.jsx";
 import ChatBox from "../components/ChatBox.jsx";
-import { ChatState } from "../Context/ChatProvider.jsx";
+import { ChatState } from "@/context/ChatProvider.jsx";
 
 const Chat = () => {
   const { user } = ChatState();
