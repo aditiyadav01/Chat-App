@@ -38,7 +38,7 @@ let onlineUsers = new Map();
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5173", //  exact origin
+    origin: "https://chat-app-45ku.onrender.com", //  exact origin
     credentials: true,
   },
 });
