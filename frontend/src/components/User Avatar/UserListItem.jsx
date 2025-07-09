@@ -24,9 +24,6 @@ const UserListItem = ({ user, handleFunction }) => {
         >
           {isOnline ? "Online" : "Offline"}
         </span>
-        {/* <span className="text-xs">
-          <b>Email:</b> {user.email}
-        </span> */}
       </div>
     </div>
   );

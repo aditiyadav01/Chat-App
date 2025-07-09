@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { User2 } from "lucide-react"; // fallback icon
+import { User2 } from "lucide-react";
 
 const ProfileModal = ({ user, children }) => {
   const [open, setOpen] = useState(false);

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
 const ChatContext = createContext();
-const ENDPOINT = "http://localhost:5000"; // your backend origin
+const ENDPOINT = "http://localhost:5000";
 let socket;
 
 const ChatProvider = ({ children }) => {
