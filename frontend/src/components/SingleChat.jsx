@@ -17,7 +17,7 @@ import { Image, SendHorizonal } from "lucide-react";
 import { FaFileImage, FaFileAlt } from "react-icons/fa";
 import { Paperclip, Image as ImageIcon } from "lucide-react";
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://chat-app-backend-qxy8.onrender.com0";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
