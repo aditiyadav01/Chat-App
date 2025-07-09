@@ -9,7 +9,6 @@ const messageRoutes = require("./routes/messageRoutes.js");
 const Message = require("../backend/models/messageModel.js");
 const uploadRoutes = require("./routes/uploadRoutes.js");
 const session = require("express-session");
-const cors = require("cors");
 
 dotenv.config();
 connectDB();
@@ -20,13 +19,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("API is Running");
 });
-
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true,
-  })
-);
 
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
@@ -46,7 +38,7 @@ let onlineUsers = new Map();
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://chat-app-45ku.onrender.com",
     credentials: true,
   },
 });
