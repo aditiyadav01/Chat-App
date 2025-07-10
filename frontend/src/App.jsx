@@ -8,7 +8,6 @@ const App = () => {
   return (
     <div
       className="h-screen w-screen flex flex-col overflow-hidden bg-cover bg-center  bg-no-repeat bg-fixed  text-black"
-      // style={{ backgroundImage: "url('/Images/bgdImage.png')" }}
       style={{
         backgroundImage:
           "url('https://tse4.mm.bing.net/th/id/OIP.4LckPfSTxG93JH_ursXlJQHaDt?r=0&rs=1&pid=ImgDetMain&o=7&rm=3')",

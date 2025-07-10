@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getSender } from "../components/config/ChatLogics.jsx";
-import axios from "axios";
 import ChatLoading from "./ChatLoading";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -9,6 +8,7 @@ import { Plus } from "lucide-react";
 
 import GroupChatModal from "./Miscelleneous/GroupChatModel.jsx";
 import { ChatState } from "@/context/ChatProvider.jsx";
+import axiosInstance from "./utils/axiosInstance.js";
 
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
@@ -31,7 +31,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data } = await axios.get(`api/chat`, config);
+      const { data } = await axiosInstance.get(`/api/chat`, config);
       setChats(data);
     } catch (error) {
       toast.error("Failed to load the chats");

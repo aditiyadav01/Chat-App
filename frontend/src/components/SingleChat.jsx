@@ -7,15 +7,14 @@ import axios from "axios";
 import { toast } from "sonner";
 import { LoaderCircle } from "lucide-react";
 import ScrollableChat from "./ScrollableChat";
-import { Input } from "./ui/input";
 import "./style.css";
 import { io } from "socket.io-client";
 import animationData from "../animations/typing.json";
 import Lottie from "lottie-react";
-import { Image, SendHorizonal } from "lucide-react";
-import { FaFileImage, FaFileAlt } from "react-icons/fa";
+import { SendHorizonal } from "lucide-react";
 import { Paperclip, Image as ImageIcon } from "lucide-react";
 import { ChatState } from "@/context/ChatProvider";
+import axiosInstance from "./utils/axiosInstance";
 
 const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
@@ -52,7 +51,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
       setLoading(true);
 
-      const { data } = await axios.get(
+      const { data } = await axiosInstance.get(
         `/api/message/${selectedChat._id}`,
         config
       );
@@ -78,7 +77,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           },
         };
         setNewMessage("");
-        const { data } = await axios.post(
+        const { data } = await axiosInstance.post(
           "/api/message",
           {
             content: newMessage,
@@ -107,7 +106,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     const file = e.target.files[0];
     if (!file) return;
     setSelectedFile(file);
-    setUploading(true); // ⬅️ Show spinner now
+    setUploading(true); //  Show spinner now
 
     const formData = new FormData();
     formData.append("file", file);
@@ -126,7 +125,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         },
       };
 
-      const res = await axios.post(
+      const res = await axiosInstance.post(
         "/api/message",
         {
           content: data.url,
@@ -138,10 +137,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       socket.emit("new message", res.data);
       setMessages((prev) => [...prev, res.data]);
       setSelectedFile(null);
-      setUploading(false); // ⬅️ Hide spinner now
+      setUploading(false); // Hide spinner now
     } catch (error) {
       toast.error("File upload failed");
-      setUploading(false); // ⬅️ Hide spinner on error
+      setUploading(false); // Hide spinner on error
     }
   };
 

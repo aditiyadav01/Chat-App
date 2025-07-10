@@ -1,11 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { formatDateLabel } from "./utils/formDateLabel";
 import { FaCheck, FaCheckDouble, FaFileAlt } from "react-icons/fa";
 import { ChatState } from "@/context/ChatProvider";

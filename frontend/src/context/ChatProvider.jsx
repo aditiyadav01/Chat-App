@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
 const ChatContext = createContext();
-const ENDPOINT = "https://chat-app-backend-qxy8.onrender.com";
+const ENDPOINT = "http://localhost:5000";
 let socket;
 
 const ChatProvider = ({ children }) => {

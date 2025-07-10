@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getSender } from "../config/ChatLogics.jsx";
 import ChatLoading from "../ChatLoading";
@@ -24,8 +23,9 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { Bell, BellIcon, ChevronDown, Loader2, Search } from "lucide-react";
+import { BellIcon, ChevronDown, Loader2, Search } from "lucide-react";
 import { ChatState } from "@/context/ChatProvider.jsx";
+import axiosInstance from "../utils/axiosInstance.js";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -53,7 +53,7 @@ const SideDrawer = () => {
           const config = {
             headers: { Authorization: `Bearer ${user.token}` },
           };
-          const { data } = await axios.get(`api/user`, config);
+          const { data } = await axiosInstance.get(`/api/user`, config);
           setAllUsers(data.slice(0, 20));
         } catch (error) {
           toast.error("Failed to load users");
@@ -82,7 +82,10 @@ const SideDrawer = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(`api/user?search=${search}`, config);
+      const { data } = await axiosInstance.get(
+        `/api/user?search=${search}`,
+        config
+      );
       setSearchResult(data);
       setLoading(false);
     } catch (error) {
@@ -99,7 +102,11 @@ const SideDrawer = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.post(`api/chat`, { userId }, config);
+      const { data } = await axiosInstance.post(
+        `/api/chat`,
+        { userId },
+        config
+      );
       if (!chats.find((c) => c._id === data._id)) {
         setChats([data, ...chats]);
       }

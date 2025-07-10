@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../utils/axiosInstance";
 
 const SignUp = () => {
   const [show, setShow] = useState(false);
@@ -38,8 +38,8 @@ const SignUp = () => {
         },
       };
 
-      const { data } = await axios.post(
-        `api/user`,
+      const { data } = await axiosInstance.post(
+        `/api/user`,
         { name, email, password, pic },
         config
       );
@@ -86,13 +86,11 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         const imageUrl = data.url.toString();
-        console.log("Image uploaded to Cloudinary:", imageUrl);
         setPic(imageUrl);
         setLoading(false);
         toast.success("Image uploaded");
       })
       .catch((err) => {
-        console.error(err);
         toast.error("Image upload failed");
         setLoading(false);
       });

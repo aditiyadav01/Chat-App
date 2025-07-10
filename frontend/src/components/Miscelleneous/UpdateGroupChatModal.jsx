@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import { Eye } from "lucide-react";
 import { toast } from "sonner";
 
@@ -16,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import UserBadgeItem from "../User Avatar/UserBadgeItem";
 import UserListItem from "../User Avatar/UserListItem";
 import { ChatState } from "@/context/ChatProvider";
+import axiosInstance from "../utils/axiosInstance";
 
 const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
   const [groupChatName, setGroupChatName] = useState("");
@@ -38,7 +38,10 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(`api/user?search=${query}`, config);
+      const { data } = await axiosInstance.get(
+        `/api/user?search=${query}`,
+        config
+      );
       setSearchResult(data);
     } catch (error) {
       toast.error("Failed to load the search results.");
@@ -57,8 +60,8 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.put(
-        `api/chat/rename`,
+      const { data } = await axiosInstance.put(
+        `/api/chat/rename`,
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -94,8 +97,8 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.put(
-        `api/chat/groupadd`,
+      const { data } = await axiosInstance.put(
+        `/api/chat/groupadd`,
         { chatId: selectedChat._id, userId: user1._id },
         config
       );
@@ -122,8 +125,8 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.put(
-        `api/chat/groupremove`,
+      const { data } = await axiosInstance.put(
+        `/api/chat/groupremove`,
         { chatId: selectedChat._id, userId: user1._id },
         config
       );

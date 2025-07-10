@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../utils/axiosInstance";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -28,8 +28,8 @@ const Login = () => {
         headers: { "Content-type": "application/json" },
       };
 
-      const { data } = await axios.post(
-        `api/user/login`,
+      const { data } = await axiosInstance.post(
+        `/api/user/login`,
         { email, password },
         config
       );
@@ -52,7 +52,6 @@ const Login = () => {
     const token = params.get("token");
 
     if (token) {
-      // Optionally fetch user data from /api/user/me
       localStorage.setItem("userInfo", JSON.stringify({ token }));
       navigate("/chat");
     }

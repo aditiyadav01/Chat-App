@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import { toast } from "sonner";
 import UserListItem from "../User Avatar/UserListItem.jsx";
 
@@ -18,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import UserBadgeItem from "../User Avatar/UserBadgeItem";
 import { ChatState } from "@/context/ChatProvider.jsx";
+import axiosInstance from "../utils/axiosInstance.js";
 
 const GroupChatModal = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -46,7 +46,10 @@ const GroupChatModal = ({ children }) => {
       const config = {
         headers: { Authorization: `Bearer ${user.token}` },
       };
-      const { data } = await axios.get(`api/user?search=${search}`, config);
+      const { data } = await axiosInstance.get(
+        `/api/user?search=${search}`,
+        config
+      );
       setSearchResult(data);
       setLoading(false);
     } catch (error) {
@@ -68,8 +71,8 @@ const GroupChatModal = ({ children }) => {
       const config = {
         headers: { Authorization: `Bearer ${user.token}` },
       };
-      const { data } = await axios.post(
-        `api/chat/group`,
+      const { data } = await axiosInstance.post(
+        `/api/chat/group`,
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),
