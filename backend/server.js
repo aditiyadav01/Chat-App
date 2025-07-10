@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://chat-app-45ku.onrender.com"],
+    origin: ["http://localhost:5173"],
     credentials: true,
   })
 );
@@ -45,7 +45,7 @@ let onlineUsers = new Map();
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chat-app-45ku.onrender.com",
+    origin: "http://localhost:5173",
     credentials: true,
   },
 });

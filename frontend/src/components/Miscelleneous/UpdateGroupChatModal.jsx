@@ -38,10 +38,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URL}/user?search=${query}`,
-        config
-      );
+      const { data } = await axios.get(`api/user?search=${query}`, config);
       setSearchResult(data);
     } catch (error) {
       toast.error("Failed to load the search results.");
@@ -61,7 +58,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.put(
-        `${import.meta.env.VITE_API_BASE_URL}/chat/rename`,
+        `api/chat/rename`,
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -98,7 +95,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.put(
-        `${import.meta.env.VITE_API_BASE_URL}/chat/groupadd`,
+        `api/chat/groupadd`,
         { chatId: selectedChat._id, userId: user1._id },
         config
       );
@@ -126,7 +123,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.put(
-        `${import.meta.env.VITE_API_BASE_URL}/chat/groupremove`,
+        `api/chat/groupremove`,
         { chatId: selectedChat._id, userId: user1._id },
         config
       );

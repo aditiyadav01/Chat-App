@@ -17,7 +17,7 @@ import { FaFileImage, FaFileAlt } from "react-icons/fa";
 import { Paperclip, Image as ImageIcon } from "lucide-react";
 import { ChatState } from "@/context/ChatProvider";
 
-const ENDPOINT = "https://chat-app-backend-qxy8.onrender.com";
+const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -211,7 +211,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     };
 
     const deliveredHandler = ({ messageId, status }) => {
-      // console.log("✅ Message delivered event received:", messageId);
       setMessages((prevMessages) =>
         prevMessages.map((msg) =>
           msg._id === messageId ? { ...msg, status } : msg

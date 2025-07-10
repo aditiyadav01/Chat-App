@@ -39,7 +39,7 @@ const SignUp = () => {
       };
 
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/user`,
+        `api/user`,
         { name, email, password, pic },
         config
       );

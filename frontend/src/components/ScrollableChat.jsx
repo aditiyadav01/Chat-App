@@ -16,7 +16,7 @@ const ScrollableChat = ({ messages }) => {
   const containerRef = useRef(null);
   const dateRefs = useRef({});
   const [floatingDate, setFloatingDate] = useState("");
-  const [previewFile, setPreviewFile] = useState(null); // holds { type, url }
+  const [previewFile, setPreviewFile] = useState(null);
 
   let lastDate = null;
 

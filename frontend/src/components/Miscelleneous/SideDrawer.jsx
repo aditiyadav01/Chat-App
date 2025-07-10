@@ -53,11 +53,8 @@ const SideDrawer = () => {
           const config = {
             headers: { Authorization: `Bearer ${user.token}` },
           };
-          const { data } = await axios.get(
-            `${import.meta.env.VITE_API_BASE_URL}/user`,
-            config
-          );
-          setAllUsers(data.slice(0, 20)); // trim to first 20
+          const { data } = await axios.get(`api/user`, config);
+          setAllUsers(data.slice(0, 20));
         } catch (error) {
           toast.error("Failed to load users");
         }
@@ -85,10 +82,7 @@ const SideDrawer = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URL}/user?search=${search}`,
-        config
-      );
+      const { data } = await axios.get(`api/user?search=${search}`, config);
       setSearchResult(data);
       setLoading(false);
     } catch (error) {
@@ -105,18 +99,14 @@ const SideDrawer = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/chat`,
-        { userId },
-        config
-      );
+      const { data } = await axios.post(`api/chat`, { userId }, config);
       if (!chats.find((c) => c._id === data._id)) {
         setChats([data, ...chats]);
       }
       setSelectedChat(data);
       setLoadingChat(false);
       setSearch("");
-      setIsSheetOpen(false); //  Close the sheet after selecting user
+      setIsSheetOpen(false);
     } catch (error) {
       toast.error("Error fetching the chat");
     }

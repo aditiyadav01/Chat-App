@@ -31,10 +31,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data } = await axios.get(
-        "${import.meta.env.VITE_API_BASE_URL}/chat",
-        config
-      );
+      const { data } = await axios.get(`api/chat`, config);
       setChats(data);
     } catch (error) {
       toast.error("Failed to load the chats");
