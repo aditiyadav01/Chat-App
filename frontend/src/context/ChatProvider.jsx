@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
-const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const ChatContext = createContext();
-const ENDPOINT = `${BASE_URL}`;
+const ENDPOINT = "https://chatappbackend-9ww1.onrender.com";
 let socket;
 
 const ChatProvider = ({ children }) => {

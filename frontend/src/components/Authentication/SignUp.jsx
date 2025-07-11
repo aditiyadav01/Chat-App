@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
-const CLOUDINARY_URL = import.meta.env.VITE_CLOUDINARY_URL;
-const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 const SignUp = () => {
   const [show, setShow] = useState(false);
@@ -79,9 +77,9 @@ const SignUp = () => {
     const data = new FormData();
     data.append("file", pics);
     data.append("upload_preset", "Chat-App");
-    data.append("cloud_name", `${CLOUDINARY_CLOUD_NAME}`);
+    data.append("cloud_name", "dxkcoe957");
 
-    fetch(`${CLOUDINARY_URL}`, {
+    fetch("https://api.cloudinary.com/v1_1/dxkcoe957/image/upload", {
       method: "POST",
       body: data,
     })
