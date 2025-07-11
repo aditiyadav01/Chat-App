@@ -15,8 +15,10 @@ import { SendHorizonal } from "lucide-react";
 import { Paperclip, Image as ImageIcon } from "lucide-react";
 import { ChatState } from "@/context/ChatProvider";
 import axiosInstance from "./utils/axiosInstance";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const CLOUDINARY_URL = import.meta.env.VITE_CLOUDINARY_URL;
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = `${BASE_URL}`;
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -26,7 +28,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     setSelectedChat,
     notification,
     setNotification,
-    chats,
     setChats,
   } = ChatState();
   const [messages, setMessages] = useState([]);
@@ -110,13 +111,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "Chat-App"); // For Cloudinary
+    formData.append("upload_preset", "Chat-App");
 
     try {
-      const { data } = await axios.post(
-        "https://api.cloudinary.com/v1_1/dxkcoe957/auto/upload",
-        formData
-      );
+      const { data } = await axios.post(`${CLOUDINARY_URL}`, formData);
 
       const config = {
         headers: {
