@@ -125,26 +125,30 @@ const ScrollableChat = ({ messages }) => {
                           src={m.content}
                           alt="sent"
                           className="max-w-[200px] rounded-lg cursor-pointer"
-                          onClick={() => window.open(m.content, "_blank")}
+                          onClick={() =>
+                            setPreviewFile({ url: m.content, type: "image" })
+                          }
                         />
                       ) : m.content.match(/\.(pdf|doc|docx)$/i) ? (
                         <div className="flex items-center gap-2 bg-white text-black px-3 py-2 rounded-lg shadow">
                           <FaFileAlt size={18} className="text-[#46211A]" />
-                          <a
-                            href={m.content}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            download
-                            className="underline text-sm text-blue-900 hover:text-[#46211A] truncate max-w-[150px]"
+                          <span
+                            onClick={() =>
+                              setPreviewFile({ url: m.content, type: "doc" })
+                            }
+                            className="cursor-pointer underline text-sm text-blue-900 hover:text-[#46211A] truncate max-w-[150px]"
                           >
                             📄 {decodeURIComponent(m.content.split("/").pop())}
-                          </a>
+                          </span>
                         </div>
                       ) : m.content.match(/\.(mp4)$/i) ? (
-                        <video controls className="max-w-[200px] rounded-lg">
-                          <source src={m.content} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
+                        <video
+                          controls
+                          className="max-w-[200px] rounded-lg cursor-pointer"
+                          onClick={() =>
+                            setPreviewFile({ url: m.content, type: "video" })
+                          }
+                        />
                       ) : (
                         m.content
                       )}
