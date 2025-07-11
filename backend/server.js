@@ -6,7 +6,7 @@ const userRoutes = require("./routes/userRoutes.js");
 const chatRoutes = require("./routes/chatRoutes.js");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware.js");
 const messageRoutes = require("./routes/messageRoutes.js");
-const Message = require("../backend/models/messageModel.js");
+const Message = require("./models/messageModel.js");
 const uploadRoutes = require("./routes/uploadRoutes.js");
 const cors = require("cors");
 
