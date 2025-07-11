@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: [`${process.env.CLIENT_URL}`],
+    origin: [`${process.env.CLIENT_URL}`], // https://chat-app-frontend-jbt1.onrender.com this is frontend url
     credentials: true,
   })
 );
